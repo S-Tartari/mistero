@@ -13,11 +13,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffe4e1; /* Colore iniziale: Rosa pastello leggero */
+            background-color: #ffe4e1;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
             overflow: hidden;
             position: relative;
-            transition: background-color 0.8s ease; /* Transizione fluida dello sfondo */
+            transition: background-color 0.8s ease;
         }
 
         /* Contenitore centrale stondato */
@@ -67,7 +67,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* GIF di caricamento specifica senza bordi arrotondati o ombre */
         .loading-gif {
             width: 100px !important;
             border-radius: 0 !important;
@@ -79,7 +78,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             min-height: 60px;
         }
 
@@ -93,30 +92,41 @@
             transition: transform 0.2s, background-color 0.2s;
         }
 
+        /* Bottoni per la scelta (Emoji grandi) */
+        .btn-choice {
+            background-color: #ffffff;
+            font-size: 32px;
+            padding: 15px 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-choice:hover { transform: scale(1.1); }
+
+        /* Bottone Indietro */
+        .btn-back {
+            background-color: #e0e0e0;
+            padding: 14px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-back:hover { transform: scale(1.05); }
+
         /* Bottone Continua / Sì / Ok */
-        .btn-next, #btn-si {
+        .btn-next, .btn-si {
             background-color: #4CAF50;
             color: white;
             box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
         }
-
-        .btn-next:hover, #btn-si:hover {
-            transform: scale(1.05);
-        }
+        .btn-next:hover, .btn-si:hover { transform: scale(1.05); }
 
         /* Bottone FORSE */
-        #btn-forse {
+        .btn-forse {
             background-color: #ffb142; 
             color: white;
             box-shadow: 0 4px 10px rgba(255, 177, 66, 0.2);
         }
-
-        #btn-forse:hover {
-            transform: scale(1.05);
-        }
+        .btn-forse:hover { transform: scale(1.05); }
 
         /* Bottone NO con animazione fluida */
-        #btn-no {
+        .btn-no {
             background-color: #ff4757;
             color: white;
             box-shadow: 0 4px 10px rgba(255, 71, 87, 0.2);
@@ -159,14 +169,8 @@
         }
 
         @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-20vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
@@ -179,26 +183,71 @@
             </div>
             <h1>Ciaooooo Giuliaaa☺️</h1>
             <div class="buttons">
-                <button class="btn-next" onclick="goToStep(2, '#f3e5f5')">➡️</button>
+                <button class="btn-next" onclick="goToStep('step-2', '#f3e5f5')">➡️</button>
             </div>
         </div>
 
         <div id="step-2" class="step">
             <h1>Spero di non esser troppo molesto😔</h1>
             <div class="buttons">
-                <button class="btn-next" onclick="goToStep(3, '#d4f1f9')">➡️</button>
+                <button class="btn-next" onclick="goToStep('step-choice', '#e0f7fa')">➡️</button>
             </div>
         </div>
 
-        <div id="step-3" class="step">
+        <div id="step-choice" class="step">
+            <h1>Cosa preferiresti fare? 🤔</h1>
+            <div class="buttons">
+                <button class="btn-choice" onclick="goToStep('step-gelato', '#d4f1f9')">🍦</button>
+                <button class="btn-choice" onclick="goToStep('step-pizza', '#ffecd2')">🍕</button>
+                <button class="btn-choice" onclick="goToStep('step-alba', '#e8eaf6')">🌅</button>
+            </div>
+        </div>
+
+        <div id="step-gelato" class="step">
             <div class="gif-container">
-                <img src="cane.gif" alt="Golden Retriever Gelato">
+                <img src="cane.gif" alt="Gelato">
             </div>
             <h1>Ti andrebbe di prendere un gelatino?🙈</h1>
-            <div class="buttons" id="proposal-buttons">
-                <button id="btn-si" onclick="goToStep(4, '#e8f5e9')">Si</button>
-                <button id="btn-forse" onclick="goToStep('maybe', '#fff9c4')">Forse</button>
-                <button id="btn-no">No</button>
+            <div class="buttons">
+                <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
+                <button class="btn-si" onclick="goToStep('step-success', '#e8f5e9')">Si</button>
+                <button class="btn-forse" onclick="goToStep('step-maybe', '#fff9c4')">Forse</button>
+                <button class="btn-no">No</button>
+            </div>
+            <div class="banner-scorrimento">
+                <span class="testo-scorrevole">La dieta domani. Bisogna reintegrare i sali minerali persi</span>
+            </div>
+        </div>
+
+        <div id="step-pizza" class="step">
+            <div class="gif-container">
+                <img src="cane.gif" alt="Pizza">
+            </div>
+            <h1>Ti andrebbe di prendere una pizza?🙈</h1>
+            <div class="buttons">
+                <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
+                <button class="btn-si" onclick="goToStep('step-success', '#e8f5e9')">Si</button>
+                <button class="btn-forse" onclick="goToStep('step-maybe', '#fff9c4')">Forse</button>
+                <button class="btn-no">No</button>
+            </div>
+            <div class="banner-scorrimento">
+                <span class="testo-scorrevole">La dieta domani. Bisogna reintegrare i sali minerali persi</span>
+            </div>
+        </div>
+
+        <div id="step-alba" class="step">
+            <div class="gif-container">
+                <img src="cane.gif" alt="Alba">
+            </div>
+            <h1>Ti andrebbe di andare a vedere l'alba?🙈</h1>
+            <div class="buttons">
+                <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
+                <button class="btn-si" onclick="goToStep('step-success', '#e8f5e9')">Si</button>
+                <button class="btn-forse" onclick="goToStep('step-maybe', '#fff9c4')">Forse</button>
+                <button class="btn-no">No</button>
+            </div>
+            <div class="banner-scorrimento">
+                <span class="testo-scorrevole">brum brum 🚗</span>
             </div>
         </div>
 
@@ -208,35 +257,51 @@
             </div>
             <h1>Pensaci bene... ⏳</h1>
             <div class="buttons">
-                <button class="btn-next" onclick="goToStep(3, '#d4f1f9')">Ok</button>
+                <button class="btn-next" onclick="goToStep('step-maybe-return', '')">Ok</button>
             </div>
         </div>
 
-        <div id="step-4" class="step">
+        <div id="step-success" class="step">
             <div class="gif-container">
                 <img src="happy.gif" alt="happpy">
             </div>
             <h1>Perfettoo🍦😋</h1>
             <div class="banner-scorrimento">
                 <span class="testo-scorrevole">non essendo un eccelso informatico, scrivimi che organizziamo</span>
+            </div>
         </div>
-
-    <script>
+    </div> <script>
         let moveInterval; 
+        let lastProposalStep = 'step-gelato'; // Variabile per ricordare la pagina di provenienza
 
-        // FUNZIONE PER PASSARE DA UNA PAGINA ALL'ALTRA
-        function goToStep(stepNumber, bgColor) {
+        function goToStep(stepId, bgColor) {
+            // Gestione ritorno dalla pagina "Forse" verso la proposta esatta
+            if (stepId === 'step-maybe-return') {
+                stepId = lastProposalStep;
+                // Ripristina anche lo sfondo coerente alla proposta
+                if (stepId === 'step-gelato') bgColor = '#d4f1f9';
+                if (stepId === 'step-pizza') bgColor = '#ffecd2';
+                if (stepId === 'step-alba') bgColor = '#e8eaf6';
+            }
+
+            // Nascondi tutto
             const steps = document.querySelectorAll('.step');
             steps.forEach(step => step.classList.remove('active'));
             
-            const nextStep = document.getElementById('step-' + stepNumber);
+            // Mostra il nuovo step
+            const nextStep = document.getElementById(stepId);
             if (nextStep) {
                 nextStep.classList.add('active');
             }
             
-            document.body.style.backgroundColor = bgColor;
+            // Cambia colore sfondo se specificato
+            if (bgColor) {
+                document.body.style.backgroundColor = bgColor;
+            }
 
-            if (stepNumber === 3) {
+            // Se entriamo in una pagina di proposta, avvia il tasto No ribelle
+            if (stepId === 'step-gelato' || stepId === 'step-pizza' || stepId === 'step-alba') {
+                lastProposalStep = stepId; // Salva in memoria dove siamo
                 moveBtnNo();
                 moveInterval = setInterval(moveBtnNo, 900);
             } else {
@@ -244,10 +309,15 @@
             }
         }
 
-        // LOGICA DEL TASTO "NO" CHE SI MUOVE DA SOLO
-        const btnNo = document.getElementById('btn-no');
-
+        // LOGICA DEL TASTO "NO"
         function moveBtnNo() {
+            // Cerca il tasto No solo dentro la pagina attualmente visibile
+            const activeStep = document.querySelector('.step.active');
+            if (!activeStep) return;
+            
+            const btnNo = activeStep.querySelector('.btn-no');
+            if (!btnNo) return;
+
             btnNo.style.position = 'fixed';
             
             const windowWidth = window.innerWidth;
@@ -262,14 +332,14 @@
             btnNo.style.top = randomY + 'px';
         }
 
-        btnNo.addEventListener('mouseover', moveBtnNo);
-
-        btnNo.addEventListener('click', (e) => {
-            e.preventDefault();
+        // Applica l'evento hover e previene il click a tutti i tasti No creati
+        document.querySelectorAll('.btn-no').forEach(btn => {
+            btn.addEventListener('mouseover', moveBtnNo);
+            btn.addEventListener('click', (e) => e.preventDefault());
         });
 
         // LOGICA DELLE EMOJI FLUTTUANTI
-        const emojis = ['🍦', '🐷', '😋'];
+        const emojis = ['🍦', '🐷', '😋','🍕','🚗'];
         
         function createEmoji() {
             const emojiEl = document.createElement('div');
