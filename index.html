@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             background-color: #ffe4e1;
-            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            font-family: 'Aptos', 'Comic Sans MS', sans-serif;
             overflow: hidden;
             position: relative;
             transition: background-color 0.8s ease;
@@ -192,17 +192,17 @@
             <div class="buttons">
                 <button class="btn-next" onclick="goToStep('step-choice', '#e0f7fa')">➡️</button>
             </div>
+            <div class="banner-scorrimento">
+                <span class="testo-scorrevole">Scappa finchè sei in tempo</span>
+            </div>
         </div>
 
         <div id="step-choice" class="step">
-            <div class="gif-container">
-                <img src="dubbio.gif" alt="dubbio">
-            </div>
             <h1>Cosa preferiresti fare? 🤔</h1>
             <div class="buttons">
-                <button class="btn-choice" onclick="goToStep('step-gelato', '#d4f1f9')">🍦</button>
-                <button class="btn-choice" onclick="goToStep('step-pizza', '#ffecd2')">🍕</button>
-                <button class="btn-choice" onclick="goToStep('step-alba', '#e8eaf6')">🌅</button>
+                <button class="btn-choice" onclick="goToStep('step-gelato', '#d4f1f9')">☺️</button>
+                <button class="btn-choice" onclick="goToStep('step-pizza', '#ffecd2')">🤩</button>
+                <button class="btn-choice" onclick="goToStep('step-alba-pre', '#e8eaf6')">🤯</button>
             </div>
         </div>
 
@@ -210,7 +210,7 @@
             <div class="gif-container">
                 <img src="cane.gif" alt="Gelato">
             </div>
-            <h1>Ti andrebbe di prendere un gelatino?🙈</h1>
+            <h1>Ti andrebbe di prendere un gelatino?🍦</h1>
             <div class="buttons">
                 <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
                 <button class="btn-si" onclick="goToStep('step-success', '#e8f5e9')">Si</button>
@@ -218,15 +218,15 @@
                 <button class="btn-no">No</button>
             </div>
             <div class="banner-scorrimento">
-                <span class="testo-scorrevole">La dieta domani. Bisogna reintegrare i sali minerali persi</span>
+                <span class="testo-scorrevole">Non si può esser sempre felici, ma con un gelato è più semplice</span>
             </div>
         </div>
 
         <div id="step-pizza" class="step">
             <div class="gif-container">
-                <img src="pizza.gif" alt="Pizza">
+                <img src="cane.gif" alt="Pizza">
             </div>
-            <h1>Ti andrebbe di prendere una pizza?🙈</h1>
+            <h1>Ti andrebbe di prendere una pizza?🍕</h1>
             <div class="buttons">
                 <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
                 <button class="btn-si" onclick="goToStep('step-success', '#e8f5e9')">Si</button>
@@ -234,15 +234,23 @@
                 <button class="btn-no">No</button>
             </div>
             <div class="banner-scorrimento">
-                <span class="testo-scorrevole">La dieta domani. Bisogna reintegrare i sali minerali persi</span>
+                <span class="testo-scorrevole">Magari con una birretta per recuperare i sali minerali</span>
+            </div>
+        </div>
+
+        <div id="step-alba-pre" class="step">
+            <h1>È una pazzia, ma perchè non farla assieme?🙈</h1>
+            <div class="buttons">
+                <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
+                <button class="btn-next" onclick="goToStep('step-alba', '#e8eaf6')">➡️</button>
             </div>
         </div>
 
         <div id="step-alba" class="step">
             <div class="gif-container">
-                <img src="alba.gif" alt="Alba">
+                <img src="cane.gif" alt="Alba">
             </div>
-            <h1>Ti andrebbe di andare a vedere l'alba?🙈</h1>
+            <h1>Ti andrebbe di andare a vedere l'alba?🌅</h1>
             <div class="buttons">
                 <button class="btn-back" onclick="goToStep('step-choice', '#e0f7fa')">↩️</button>
                 <button class="btn-si" onclick="goToStep('step-success', '#e8f5e9')">Si</button>
@@ -250,7 +258,7 @@
                 <button class="btn-no">No</button>
             </div>
             <div class="banner-scorrimento">
-                <span class="testo-scorrevole">brum brum 🚗</span>
+                <span class="testo-scorrevole">Brum brum + karaoke 🚗</span>
             </div>
         </div>
 
@@ -259,6 +267,9 @@
                 <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Caricamento..." class="loading-gif">
             </div>
             <h1>Pensaci bene... ⏳</h1>
+            <div class="banner-scorrimento">
+                <span class="testo-scorrevole">Nel mentre mi sto sotterrando dalla vergogna</span>
+            </div>
             <div class="buttons">
                 <button class="btn-next" onclick="goToStep('step-maybe-return', '')">Ok</button>
             </div>
@@ -268,9 +279,9 @@
             <div class="gif-container">
                 <img src="happy.gif" alt="happpy">
             </div>
-            <h1>Perfettoo😋</h1>
+            <h1>Perfettoo 😋</h1>
             <div class="banner-scorrimento">
-                <span class="testo-scorrevole">non essendo un eccelso informatico, scrivimi che organizziamo</span>
+                <span class="testo-scorrevole">Quindi? Cos'hai scelto?</span>
             </div>
         </div>
     </div> <script>
@@ -342,7 +353,7 @@
         });
 
         // LOGICA DELLE EMOJI FLUTTUANTI
-        const emojis = ['🍦', '🐷', '😋','🍕','🚗'];
+        const emojis = ['🍦', '🐷', '😋','🌅','🍕'];
         
         function createEmoji() {
             const emojiEl = document.createElement('div');
